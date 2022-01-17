@@ -8,12 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		30DC60BA278DA765002AC498 /* CatViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60B9278DA765002AC498 /* CatViewerApp.swift */; };
-		30DC60BC278DA765002AC498 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60BB278DA765002AC498 /* ContentView.swift */; };
+		30DC60BC278DA765002AC498 /* CatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60BB278DA765002AC498 /* CatListView.swift */; };
 		30DC60BE278DA766002AC498 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30DC60BD278DA766002AC498 /* Assets.xcassets */; };
 		30DC60C1278DA766002AC498 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30DC60C0278DA766002AC498 /* Preview Assets.xcassets */; };
-		30DC60CB278DA767002AC498 /* CatViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60CA278DA767002AC498 /* CatViewerTests.swift */; };
+		30DC60CB278DA767002AC498 /* CatViewer_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60CA278DA767002AC498 /* CatViewer_Tests.swift */; };
 		30DC60D5278DA767002AC498 /* CatViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60D4278DA767002AC498 /* CatViewerUITests.swift */; };
 		30DC60D7278DA767002AC498 /* CatViewerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60D6278DA767002AC498 /* CatViewerUITestsLaunchTests.swift */; };
+		30DC60E5278DA8A4002AC498 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60E4278DA8A4002AC498 /* NetworkManager.swift */; };
+		30DC60E7278DA8D3002AC498 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60E6278DA8D3002AC498 /* NetworkProtocol.swift */; };
+		30DC60EA278DAA0D002AC498 /* CatsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60E9278DAA0D002AC498 /* CatsListViewModel.swift */; };
+		30DC60EC278DAA8B002AC498 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60EB278DAA8B002AC498 /* NetworkResponse.swift */; };
+		30DC60EF278DB460002AC498 /* ReusableCatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60EE278DB460002AC498 /* ReusableCatCell.swift */; };
+		30DC60F5278DBB7D002AC498 /* CatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60F4278DBB7D002AC498 /* CatViewModel.swift */; };
+		30DC60F8278DD4BA002AC498 /* DetailedCatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60F7278DD4BA002AC498 /* DetailedCatView.swift */; };
+		30DC60FB278DE8F8002AC498 /* StructWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60FA278DE8F8002AC498 /* StructWrapper.swift */; };
+		30DC60FD278DE944002AC498 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60FC278DE944002AC498 /* DataCache.swift */; };
+		30DC6102278F5C61002AC498 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC6101278F5C61002AC498 /* APIError.swift */; };
+		30DC6104278F85FC002AC498 /* CacherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC6103278F85FC002AC498 /* CacherProtocol.swift */; };
+		30DC610627935B9E002AC498 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC610527935B9E002AC498 /* MockNetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,14 +48,26 @@
 /* Begin PBXFileReference section */
 		30DC60B6278DA765002AC498 /* CatViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30DC60B9278DA765002AC498 /* CatViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewerApp.swift; sourceTree = "<group>"; };
-		30DC60BB278DA765002AC498 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		30DC60BB278DA765002AC498 /* CatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatListView.swift; sourceTree = "<group>"; };
 		30DC60BD278DA766002AC498 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30DC60C0278DA766002AC498 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		30DC60C6278DA767002AC498 /* CatViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		30DC60CA278DA767002AC498 /* CatViewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewerTests.swift; sourceTree = "<group>"; };
+		30DC60CA278DA767002AC498 /* CatViewer_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewer_Tests.swift; sourceTree = "<group>"; };
 		30DC60D0278DA767002AC498 /* CatViewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30DC60D4278DA767002AC498 /* CatViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewerUITests.swift; sourceTree = "<group>"; };
 		30DC60D6278DA767002AC498 /* CatViewerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		30DC60E4278DA8A4002AC498 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		30DC60E6278DA8D3002AC498 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		30DC60E9278DAA0D002AC498 /* CatsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsListViewModel.swift; sourceTree = "<group>"; };
+		30DC60EB278DAA8B002AC498 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		30DC60EE278DB460002AC498 /* ReusableCatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCatCell.swift; sourceTree = "<group>"; };
+		30DC60F4278DBB7D002AC498 /* CatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewModel.swift; sourceTree = "<group>"; };
+		30DC60F7278DD4BA002AC498 /* DetailedCatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCatView.swift; sourceTree = "<group>"; };
+		30DC60FA278DE8F8002AC498 /* StructWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructWrapper.swift; sourceTree = "<group>"; };
+		30DC60FC278DE944002AC498 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
+		30DC6101278F5C61002AC498 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		30DC6103278F85FC002AC498 /* CacherProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacherProtocol.swift; sourceTree = "<group>"; };
+		30DC610527935B9E002AC498 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +118,12 @@
 		30DC60B8278DA765002AC498 /* CatViewer */ = {
 			isa = PBXGroup;
 			children = (
+				30DC6100278F5C47002AC498 /* Errors */,
+				30DC60F9278DE8EA002AC498 /* Caching */,
+				30DC60ED278DB43C002AC498 /* ViewComponents */,
+				30DC60E8278DA9F9002AC498 /* ViewModel */,
+				30DC60E3278DA88E002AC498 /* Networking */,
 				30DC60B9278DA765002AC498 /* CatViewerApp.swift */,
-				30DC60BB278DA765002AC498 /* ContentView.swift */,
 				30DC60BD278DA766002AC498 /* Assets.xcassets */,
 				30DC60BF278DA766002AC498 /* Preview Content */,
 			);
@@ -113,7 +141,8 @@
 		30DC60C9278DA767002AC498 /* CatViewerTests */ = {
 			isa = PBXGroup;
 			children = (
-				30DC60CA278DA767002AC498 /* CatViewerTests.swift */,
+				30DC60CA278DA767002AC498 /* CatViewer_Tests.swift */,
+				30DC610527935B9E002AC498 /* MockNetworkManager.swift */,
 			);
 			path = CatViewerTests;
 			sourceTree = "<group>";
@@ -125,6 +154,53 @@
 				30DC60D6278DA767002AC498 /* CatViewerUITestsLaunchTests.swift */,
 			);
 			path = CatViewerUITests;
+			sourceTree = "<group>";
+		};
+		30DC60E3278DA88E002AC498 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				30DC60E4278DA8A4002AC498 /* NetworkManager.swift */,
+				30DC60E6278DA8D3002AC498 /* NetworkProtocol.swift */,
+				30DC60EB278DAA8B002AC498 /* NetworkResponse.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		30DC60E8278DA9F9002AC498 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				30DC60E9278DAA0D002AC498 /* CatsListViewModel.swift */,
+				30DC60F4278DBB7D002AC498 /* CatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		30DC60ED278DB43C002AC498 /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				30DC60BB278DA765002AC498 /* CatListView.swift */,
+				30DC60EE278DB460002AC498 /* ReusableCatCell.swift */,
+				30DC60F7278DD4BA002AC498 /* DetailedCatView.swift */,
+			);
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		30DC60F9278DE8EA002AC498 /* Caching */ = {
+			isa = PBXGroup;
+			children = (
+				30DC60FA278DE8F8002AC498 /* StructWrapper.swift */,
+				30DC60FC278DE944002AC498 /* DataCache.swift */,
+				30DC6103278F85FC002AC498 /* CacherProtocol.swift */,
+			);
+			path = Caching;
+			sourceTree = "<group>";
+		};
+		30DC6100278F5C47002AC498 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				30DC6101278F5C61002AC498 /* APIError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +333,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30DC60BC278DA765002AC498 /* ContentView.swift in Sources */,
+				30DC60FB278DE8F8002AC498 /* StructWrapper.swift in Sources */,
+				30DC60E7278DA8D3002AC498 /* NetworkProtocol.swift in Sources */,
+				30DC60E5278DA8A4002AC498 /* NetworkManager.swift in Sources */,
+				30DC60BC278DA765002AC498 /* CatListView.swift in Sources */,
+				30DC60F8278DD4BA002AC498 /* DetailedCatView.swift in Sources */,
+				30DC6102278F5C61002AC498 /* APIError.swift in Sources */,
+				30DC60EA278DAA0D002AC498 /* CatsListViewModel.swift in Sources */,
+				30DC6104278F85FC002AC498 /* CacherProtocol.swift in Sources */,
 				30DC60BA278DA765002AC498 /* CatViewerApp.swift in Sources */,
+				30DC60F5278DBB7D002AC498 /* CatViewModel.swift in Sources */,
+				30DC60FD278DE944002AC498 /* DataCache.swift in Sources */,
+				30DC60EC278DAA8B002AC498 /* NetworkResponse.swift in Sources */,
+				30DC60EF278DB460002AC498 /* ReusableCatCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +353,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30DC60CB278DA767002AC498 /* CatViewerTests.swift in Sources */,
+				30DC610627935B9E002AC498 /* MockNetworkManager.swift in Sources */,
+				30DC60CB278DA767002AC498 /* CatViewer_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
