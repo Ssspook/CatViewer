@@ -6,11 +6,13 @@ final class NetworkManager : NetworkProtocol {
     
     init(numberOfCats: Int) {
         _components = URLComponents()
+
         _components.queryItems = [URLQueryItem]()
         _components.scheme = "https"
         _components.host = "api.thecatapi.com"
         _components.path = "/v1/images/search"
-        
+
+      // what about "page"? so as only api deprecate and remove sort==Rand - all pages will be the same
         let queryItem = URLQueryItem(name: "limit", value: String(numberOfCats))
         _components.queryItems?.append(queryItem)
     }
@@ -38,7 +40,7 @@ final class NetworkManager : NetworkProtocol {
     
     func fetchData<T: Decodable>() throws -> AnyPublisher<T, APIError> {
         guard let url = _components.url else { throw APIError.urlComposing }
-       
+
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap({ (data, response) -> Data in
                 

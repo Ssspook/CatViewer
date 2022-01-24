@@ -8,6 +8,7 @@ struct ReusableCatCell: View {
     }
     
     var body: some View {
+      // prefer not to use literals, especially math literals
         HStack(spacing: 16) {
             
             if let data = DataCache.shared.getData(for: catViewModel.url)?.value,

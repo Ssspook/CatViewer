@@ -13,8 +13,9 @@ class DataCache: NSCache<NSString, StructWrapper<Data>>, CacherProtocol {
     
     func getData(for key: String) -> StructWrapper<Data>? {
         let keyString = NSString(string: key)
+      // try not to use self. if it is not required
         let dataWrapper = self.object(forKey: keyString)
-        
+
         return dataWrapper
     }
 }
