@@ -15,6 +15,7 @@ struct CatListView: View {
                 .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(.pink))
                 .mask(RoundedRectangle(cornerRadius: 16))
                 .onAppear {
+                  // this looks like logic. why not to move it to ViewModel?
                     if self.catsListViewModel.cats.last == cat {
                         catsListViewModel.fetchCats()
                     }

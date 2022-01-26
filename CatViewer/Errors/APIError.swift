@@ -1,5 +1,6 @@
 import Foundation
 
+// I'd prefer move everything except cases to extension APIError
 enum APIError: Error, CustomStringConvertible {
     var description: String {
         switch self {

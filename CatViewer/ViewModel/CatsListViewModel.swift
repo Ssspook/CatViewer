@@ -21,8 +21,10 @@ final class CatsListViewModel: ObservableObject {
                     switch completion {
                     case .failure(let error):
                         self.error = error
+//        you shouldn't believe to clients of this class. should be to perform on main queue
                         showAlert = true
                     case .finished:
+                        // what for?
                         showAlert = false
                     }
                     
