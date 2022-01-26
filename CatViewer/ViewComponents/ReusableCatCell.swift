@@ -10,7 +10,7 @@ struct ReusableCatCell: View {
     var body: some View {
         HStack(spacing: 16) {
             
-            if let data = DataCache.shared.getData(for: catViewModel.url)?.value,
+            if let data = ImageCache.shared.getData(for: catViewModel.url),
                let image = UIImage(data: data) {
                 
                 Image(uiImage: image)
@@ -37,6 +37,6 @@ struct ReusableCatCell: View {
 
 struct ReusableCatCell_Previews: PreviewProvider {
     static var previews: some View {
-        ReusableCatCell(CatViewModel(catDTO: Cat(breeds: nil, id: "2345", url: "https://cdn2.thecatapi.com/images/Vijss-2-3.png", width: 600, height: 600), networkManager: NetworkManager(numberOfCats: 1)))
+        ReusableCatCell(CatViewModel(cat: Cat(breeds: nil, id: "2345", url: "https://cdn2.thecatapi.com/images/Vijss-2-3.png", width: 600, height: 600), networker: NetworkManager(numberOfCats: 1)))
     }
 }

@@ -9,7 +9,7 @@ struct DetailedCatView: View {
     
     var body: some View {
         VStack {
-            if let data = DataCache.shared.getData(for: catViewModel.url)?.value,
+            if let data = ImageCache.shared.getData(for: catViewModel.url),
                let image = UIImage(data: data) {
                 Image(uiImage: image)
                     .resizable()
@@ -28,6 +28,6 @@ struct DetailedCatView: View {
 
 struct DetailedCatView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailedCatView(CatViewModel(catDTO: Cat(breeds: nil, id: "fdfdd", url: "https://cdn2.thecatapi.com/images/Vijss-2-3.png", width: 600, height: 600), networkManager: NetworkManager(numberOfCats: 1)))
+        DetailedCatView(CatViewModel(cat: Cat(breeds: nil, id: "fdfdd", url: "https://cdn2.thecatapi.com/images/Vijss-2-3.png", width: 600, height: 600), networker: NetworkManager(numberOfCats: 1)))
     }
 }

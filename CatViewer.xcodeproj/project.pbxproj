@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30172C7127A14D4B00A4821C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30172C7027A14D4A00A4821C /* Endpoint.swift */; };
 		30DC60BA278DA765002AC498 /* CatViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60B9278DA765002AC498 /* CatViewerApp.swift */; };
 		30DC60BC278DA765002AC498 /* CatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60BB278DA765002AC498 /* CatListView.swift */; };
 		30DC60BE278DA766002AC498 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30DC60BD278DA766002AC498 /* Assets.xcassets */; };
@@ -21,8 +22,7 @@
 		30DC60EF278DB460002AC498 /* ReusableCatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60EE278DB460002AC498 /* ReusableCatCell.swift */; };
 		30DC60F5278DBB7D002AC498 /* CatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60F4278DBB7D002AC498 /* CatViewModel.swift */; };
 		30DC60F8278DD4BA002AC498 /* DetailedCatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60F7278DD4BA002AC498 /* DetailedCatView.swift */; };
-		30DC60FB278DE8F8002AC498 /* StructWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60FA278DE8F8002AC498 /* StructWrapper.swift */; };
-		30DC60FD278DE944002AC498 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60FC278DE944002AC498 /* DataCache.swift */; };
+		30DC60FD278DE944002AC498 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC60FC278DE944002AC498 /* ImageCache.swift */; };
 		30DC6102278F5C61002AC498 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC6101278F5C61002AC498 /* APIError.swift */; };
 		30DC6104278F85FC002AC498 /* CacherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC6103278F85FC002AC498 /* CacherProtocol.swift */; };
 		30DC610627935B9E002AC498 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC610527935B9E002AC498 /* MockNetworkManager.swift */; };
@@ -46,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30172C7027A14D4A00A4821C /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		30DC60B6278DA765002AC498 /* CatViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30DC60B9278DA765002AC498 /* CatViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewerApp.swift; sourceTree = "<group>"; };
 		30DC60BB278DA765002AC498 /* CatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatListView.swift; sourceTree = "<group>"; };
@@ -63,8 +64,7 @@
 		30DC60EE278DB460002AC498 /* ReusableCatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCatCell.swift; sourceTree = "<group>"; };
 		30DC60F4278DBB7D002AC498 /* CatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewModel.swift; sourceTree = "<group>"; };
 		30DC60F7278DD4BA002AC498 /* DetailedCatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCatView.swift; sourceTree = "<group>"; };
-		30DC60FA278DE8F8002AC498 /* StructWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructWrapper.swift; sourceTree = "<group>"; };
-		30DC60FC278DE944002AC498 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
+		30DC60FC278DE944002AC498 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		30DC6101278F5C61002AC498 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		30DC6103278F85FC002AC498 /* CacherProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacherProtocol.swift; sourceTree = "<group>"; };
 		30DC610527935B9E002AC498 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
@@ -95,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30172C6927A14B1900A4821C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				30DC60B9278DA765002AC498 /* CatViewerApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		30DC60AD278DA765002AC498 = {
 			isa = PBXGroup;
 			children = (
@@ -118,12 +126,12 @@
 		30DC60B8278DA765002AC498 /* CatViewer */ = {
 			isa = PBXGroup;
 			children = (
+				30172C6927A14B1900A4821C /* App */,
+				30DC60ED278DB43C002AC498 /* ViewComponents */,
+				30DC60E3278DA88E002AC498 /* Networking */,
 				30DC6100278F5C47002AC498 /* Errors */,
 				30DC60F9278DE8EA002AC498 /* Caching */,
-				30DC60ED278DB43C002AC498 /* ViewComponents */,
 				30DC60E8278DA9F9002AC498 /* ViewModel */,
-				30DC60E3278DA88E002AC498 /* Networking */,
-				30DC60B9278DA765002AC498 /* CatViewerApp.swift */,
 				30DC60BD278DA766002AC498 /* Assets.xcassets */,
 				30DC60BF278DA766002AC498 /* Preview Content */,
 			);
@@ -162,6 +170,7 @@
 				30DC60E4278DA8A4002AC498 /* NetworkManager.swift */,
 				30DC60E6278DA8D3002AC498 /* NetworkProtocol.swift */,
 				30DC60EB278DAA8B002AC498 /* NetworkResponse.swift */,
+				30172C7027A14D4A00A4821C /* Endpoint.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -188,8 +197,7 @@
 		30DC60F9278DE8EA002AC498 /* Caching */ = {
 			isa = PBXGroup;
 			children = (
-				30DC60FA278DE8F8002AC498 /* StructWrapper.swift */,
-				30DC60FC278DE944002AC498 /* DataCache.swift */,
+				30DC60FC278DE944002AC498 /* ImageCache.swift */,
 				30DC6103278F85FC002AC498 /* CacherProtocol.swift */,
 			);
 			path = Caching;
@@ -333,7 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30DC60FB278DE8F8002AC498 /* StructWrapper.swift in Sources */,
+				30172C7127A14D4B00A4821C /* Endpoint.swift in Sources */,
 				30DC60E7278DA8D3002AC498 /* NetworkProtocol.swift in Sources */,
 				30DC60E5278DA8A4002AC498 /* NetworkManager.swift in Sources */,
 				30DC60BC278DA765002AC498 /* CatListView.swift in Sources */,
@@ -343,7 +351,7 @@
 				30DC6104278F85FC002AC498 /* CacherProtocol.swift in Sources */,
 				30DC60BA278DA765002AC498 /* CatViewerApp.swift in Sources */,
 				30DC60F5278DBB7D002AC498 /* CatViewModel.swift in Sources */,
-				30DC60FD278DE944002AC498 /* DataCache.swift in Sources */,
+				30DC60FD278DE944002AC498 /* ImageCache.swift in Sources */,
 				30DC60EC278DAA8B002AC498 /* NetworkResponse.swift in Sources */,
 				30DC60EF278DB460002AC498 /* ReusableCatCell.swift in Sources */,
 			);

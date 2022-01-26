@@ -5,45 +5,48 @@ final class CatViewModel: ObservableObject, Identifiable {
     @Published var dataFetched = false
     @Published var displayErrorPicture = false
     let id = UUID()
-    let catDTO: Cat
+    let cat: Cat
     let breeds: [Breed]?
     let catId: String
     let url: String
-    let width, height: Int
+    let width: Int
+    let height: Int
     
     var jsonPrettyString: String {
-        prettyPrintData(catDTO)
+        prettyPrintData(cat)
     }
     
-    private let _networkManager: NetworkProtocol
-    private var _cancellables = Set<AnyCancellable>()
+    private let networkManager: NetworkProtocol
+    private var cancellables = Set<AnyCancellable>()
     
-    init(catDTO: Cat, networkManager: NetworkProtocol) {
-        self.catDTO = catDTO
-        breeds = catDTO.breeds
-        catId = catDTO.id
-        url = catDTO.url
-        width = catDTO.width
-        height = catDTO.height
-        _networkManager = networkManager
+    init(cat: Cat, networker: NetworkProtocol) {
+        self.cat = cat
+        breeds = cat.breeds
+        catId = cat.id
+        url = cat.url
+        width = cat.width
+        height = cat.height
+        self.networkManager = networker
     }
     
     func fetchImage() {
-        _networkManager.loadPictureFromUrl(url: URL(string: url))
-            .sink { [unowned self] completion in
+        networkManager.loadPictureFromUrl(url: URL(string: url))
+            .sink { [weak self] completion in
                 
                 switch completion {
                 case .failure(_):
-                    self.displayErrorPicture.toggle()
+                    self?.displayErrorPicture.toggle()
                 case .finished:
-                    self.displayErrorPicture = false
+                    self?.displayErrorPicture = false
                 }
     
-            } receiveValue: { [unowned self] data in
-                DataCache.shared.cacheData(itemToCache: StructWrapper(data), for: self.url)
-                self.dataFetched.toggle()
+            } receiveValue: { [weak self] data in
+                guard let urlString = self?.url else { return }
+                
+                ImageCache.shared.cacheData(for: urlString)
+                self?.dataFetched.toggle()
             }
-            .store(in: &_cancellables)
+            .store(in: &cancellables)
     }
     
     private func prettyPrintData(_ encodingObject: Cat) -> String {

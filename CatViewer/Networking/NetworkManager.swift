@@ -3,14 +3,15 @@ import Combine
 
 final class NetworkManager : NetworkProtocol {
     private var _components: URLComponents
-    
+
     init(numberOfCats: Int) {
         _components = URLComponents()
+        
         _components.queryItems = [URLQueryItem]()
         _components.scheme = "https"
         _components.host = "api.thecatapi.com"
         _components.path = "/v1/images/search"
-        
+
         let queryItem = URLQueryItem(name: "limit", value: String(numberOfCats))
         _components.queryItems?.append(queryItem)
     }

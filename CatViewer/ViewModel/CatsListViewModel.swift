@@ -6,30 +6,29 @@ final class CatsListViewModel: ObservableObject {
     @Published var cats = [CatViewModel]()
     @Published var showAlert = false
     private(set) var error: APIError?
-    private let _networkManager: NetworkProtocol
-    private var _cancellables = Set<AnyCancellable>()
+    private let networkManager: NetworkProtocol
+    private var cancellables = Set<AnyCancellable>()
     
     init(networkManager: NetworkProtocol) {
-        _networkManager = networkManager
+        self.networkManager = networkManager
     }
     
     func fetchCats() {
         do {
-            try _networkManager.fetchData()
-                .sink(receiveCompletion: { [unowned self] completion in
+            try networkManager.fetchData()
+                .sink(receiveCompletion: { [weak self] completion in
                     
                     switch completion {
                     case .failure(let error):
-                        self.error = error
-                        showAlert = true
-                    case .finished:
-                        showAlert = false
+                        self?.error = error
+                        self?.showAlert = true
+                    case .finished: break
                     }
                     
                 }, receiveValue: {
                     self.catParser(catsList: $0)
                 })
-                .store(in: &_cancellables)
+                .store(in: &cancellables)
             
         } catch let error as APIError {
             self.error = error
@@ -41,7 +40,7 @@ final class CatsListViewModel: ObservableObject {
     
     private func catParser(catsList: [Cat]) {
         catsList.forEach { catElement in
-            let catVM = CatViewModel(catDTO: catElement, networkManager: _networkManager)
+            let catVM = CatViewModel(cat: catElement, networker: networkManager)
             
             catVM.fetchImage()
             self.cats.append(catVM)
