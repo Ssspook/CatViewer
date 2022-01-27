@@ -11,13 +11,12 @@ final class CatViewModel: ObservableObject, Identifiable {
     let url: String
     let width: Int
     let height: Int
+    private let networker: NetworkProtocol
+    private var cancellables = Set<AnyCancellable>()
     
     var jsonPrettyString: String {
         prettyPrintData(cat)
     }
-    
-    private let networkManager: NetworkProtocol
-    private var cancellables = Set<AnyCancellable>()
     
     init(cat: Cat, networker: NetworkProtocol) {
         self.cat = cat
@@ -26,25 +25,30 @@ final class CatViewModel: ObservableObject, Identifiable {
         url = cat.url
         width = cat.width
         height = cat.height
-        self.networkManager = networker
+        self.networker = networker
     }
     
     func fetchImage() {
-        networkManager.loadPictureFromUrl(url: URL(string: url))
+        if url.suffix(3) == "gif" {
+            displayErrorPicture = true
+            
+            return
+        }
+       
+        networker.loadPictureFromUrl(url: URL(string: url))
             .sink { [weak self] completion in
                 
                 switch completion {
                 case .failure(_):
                     self?.displayErrorPicture.toggle()
-                case .finished:
-                    self?.displayErrorPicture = false
+                case .finished: break
                 }
     
             } receiveValue: { [weak self] data in
                 guard let urlString = self?.url else { return }
                 
-                ImageCache.shared.cacheData(for: urlString)
                 self?.dataFetched.toggle()
+                ImageCache.shared.cacheData(for: urlString)
             }
             .store(in: &cancellables)
     }
@@ -82,5 +86,4 @@ extension CatViewModel: Equatable {
         
         return false
     }
-    
 }

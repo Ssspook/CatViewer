@@ -11,9 +11,14 @@ struct DetailedCatView: View {
         VStack {
             if let data = ImageCache.shared.getData(for: catViewModel.url),
                let image = UIImage(data: data) {
+                
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
+                
+            } else if catViewModel.displayErrorPicture == true {
+                Image("ErrorPicture")
+                    .resizable()
             } else {
                 ProgressView().progressViewStyle(.circular)
                     .onAppear(perform: catViewModel.fetchImage)

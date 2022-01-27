@@ -15,14 +15,15 @@ class ImageCache: CacherProtocol {
             return
         }
         
-        let urlRequest = URLRequest(url: url)
+        let urlRequest = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
+        
         if let cachedURLResponce = URLCache.shared.cachedResponse(for: urlRequest) {
             URLCache.shared.storeCachedResponse(cachedURLResponce, for: urlRequest)
         }
     }
     
     func getData(for urlString: String?) -> Data? {
-        var pictureData: Data? = nil
+        var pictureData: Data?
         
         guard let urlString = urlString else {
             return nil

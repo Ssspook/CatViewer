@@ -1,27 +1,28 @@
 import Foundation
 import Combine
-import SwiftUI
 
 final class CatsListViewModel: ObservableObject {
     @Published var cats = [CatViewModel]()
     @Published var showAlert = false
     private(set) var error: APIError?
-    private let networkManager: NetworkProtocol
+    private let networker: NetworkProtocol
     private var cancellables = Set<AnyCancellable>()
     
-    init(networkManager: NetworkProtocol) {
-        self.networkManager = networkManager
+    init(networker: NetworkProtocol) {
+        self.networker = networker
     }
     
     func fetchCats() {
         do {
-            try networkManager.fetchData()
+            try networker.fetchData()
                 .sink(receiveCompletion: { [weak self] completion in
                     
                     switch completion {
                     case .failure(let error):
-                        self?.error = error
-                        self?.showAlert = true
+                        DispatchQueue.main.async {
+                            self?.error = error
+                            self?.showAlert = true
+                        }
                     case .finished: break
                     }
                     
@@ -29,10 +30,12 @@ final class CatsListViewModel: ObservableObject {
                     self.catParser(catsList: $0)
                 })
                 .store(in: &cancellables)
-            
+                
         } catch let error as APIError {
-            self.error = error
-            showAlert = true
+            DispatchQueue.main.async {
+                self.error = error
+                self.showAlert = true
+            }
         } catch { }
         
         showAlert = false
@@ -40,10 +43,10 @@ final class CatsListViewModel: ObservableObject {
     
     private func catParser(catsList: [Cat]) {
         catsList.forEach { catElement in
-            let catVM = CatViewModel(cat: catElement, networker: networkManager)
+            let newCatVM = CatViewModel(cat: catElement, networker: networker)
             
-            catVM.fetchImage()
-            self.cats.append(catVM)
+            newCatVM.fetchImage()
+            self.cats.append(newCatVM)
         }
     }
 }

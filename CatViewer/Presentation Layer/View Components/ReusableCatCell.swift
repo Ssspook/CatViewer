@@ -8,27 +8,29 @@ struct ReusableCatCell: View {
     }
     
     var body: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: Constants.spacingBetweenViewElements) {
             
             if let data = ImageCache.shared.getData(for: catViewModel.url),
                let image = UIImage(data: data) {
                 
                 Image(uiImage: image)
                     .resizable()
-                    .frame(width: CGFloat(Float(catViewModel.width) / Float(catViewModel.height) * 50), height: 50)
+                    .frame(width: CGFloat(Float(catViewModel.width) / Float(catViewModel.height) * Float(Constants.baseHeight)),
+                           height: Constants.baseHeight)
+                
             } else if catViewModel.displayErrorPicture == true {
                 Image("ErrorPicture")
                     .resizable()
-                    .frame(width: 100, height: 50)
+                    .frame(width: 50, height: 50)
             } else {
                 ProgressView().progressViewStyle(.circular)
-                    .onAppear(perform: catViewModel.fetchImage)
             }
             
             VStack {
                 Text("Width: \(catViewModel.width)")
                 Text("Height: \(catViewModel.height)")
             }
+            
             Spacer()
         }
         .frame(maxWidth: .infinity)
