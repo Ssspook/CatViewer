@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct CatListView: View {
-    @StateObject private var catsListViewModel = CatsListViewModel(networker: NetworkManager(numberOfCats: Constants.numberOfCats))
+    @StateObject private var catsListViewModel = CatsListViewModel(networker: NetworkManager(numberOfCats: Constants.Network.numberOfCats))
+    private var UIConstants = Constants.UIParameters.self
     
     var body: some View {
         
@@ -12,25 +13,20 @@ struct CatListView: View {
                         ReusableCatCell(cat)
                     }
                     .padding()
-                    .overlay(RoundedRectangle(cornerRadius: Constants.cornerRadius).strokeBorder(.pink))
-                    .mask(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                    .overlay(RoundedRectangle(cornerRadius: UIConstants.cornerRadius).strokeBorder(.pink))
+                    .mask(RoundedRectangle(cornerRadius: UIConstants.cornerRadius))
                 }
                 .navigationTitle(Text("Cats"))
-                .onAppear(perform: {
-                    if catsListViewModel.cats.count == 0 {
-                        catsListViewModel.fetchCats()
-                    }
-                })
-                .alert(catsListViewModel.error?.name ?? "Error", isPresented: $catsListViewModel.showAlert, actions: {}, message: {
-                    Text(catsListViewModel.error?.description ?? "Error occured")
+                .alert(catsListViewModel.alertHeader, isPresented: $catsListViewModel.showAlert, actions: {}, message: {
+                    Text(catsListViewModel.alertMessage)
                 })
                 
                 MoreButton(catsListViewModel)
             }
         }
-        .onAppear {
-            URLCache.shared.memoryCapacity = 1024 * 1024 * 512
-        }
+        .onAppear(perform: {
+            catsListViewModel.fetchCatsIfNeeded()
+        })
     }
 }
 

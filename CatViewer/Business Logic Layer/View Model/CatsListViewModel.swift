@@ -12,7 +12,15 @@ final class CatsListViewModel: ObservableObject {
         self.networker = networker
     }
     
-    func fetchCats() {
+    var alertHeader: String {
+        error?.name ?? "Error"
+    }
+    
+    var alertMessage: String {
+        error?.localizedDescription ?? "An error occured"
+    }
+    
+    func fetchCatsIfNeeded() {
         do {
             try networker.fetchData()
                 .sink(receiveCompletion: { [weak self] completion in
@@ -38,7 +46,9 @@ final class CatsListViewModel: ObservableObject {
             }
         } catch { }
         
-        showAlert = false
+        DispatchQueue.main.async {
+            self.showAlert = false
+        }
     }
     
     private func catParser(catsList: [Cat]) {
@@ -46,7 +56,10 @@ final class CatsListViewModel: ObservableObject {
             let newCatVM = CatViewModel(cat: catElement, networker: networker)
             
             newCatVM.fetchImage()
-            self.cats.append(newCatVM)
+            
+            DispatchQueue.main.async {
+                self.cats.append(newCatVM)
+            }
         }
     }
 }

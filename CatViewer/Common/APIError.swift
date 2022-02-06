@@ -1,5 +1,14 @@
 import Foundation
-
+/*
+ Is this decision somehow worse than
+ extension Error {
+    var asApiError: APIError? {
+        ...
+ ?
+ 
+ Just dont quite get the idea. We will either way cast Error to our type.
+ The choice is between APIError.convert(...) and error.asApiError
+ */
 enum APIError: Error, CustomStringConvertible {
     case urlComposing
     case url(URLError?)

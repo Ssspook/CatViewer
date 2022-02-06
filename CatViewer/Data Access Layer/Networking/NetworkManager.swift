@@ -3,13 +3,14 @@ import Combine
 
 final class NetworkManager : NetworkProtocol {
     private var endpointManager: EndpointsProtocol
+    private var NetworkConstants = Constants.Network.self
     
     private var endpoint: Endpoint {
         endpointManager.endpoint
     }
     
     init(numberOfCats: Int, endpointHandler: EndpointsProtocol = EndpointsManager()) {
-       endpointManager = endpointHandler
+        endpointManager = endpointHandler
         endpointManager.addQuery(name: "limit", value: String(numberOfCats))
     }
     
@@ -31,10 +32,8 @@ final class NetworkManager : NetworkProtocol {
                 
                 return data
             })
+            .mapError { APIError.convert(error: $0) }
             .receive(on: DispatchQueue.main)
-            .mapError({ error in
-                APIError.convert(error: error)
-            })
             .eraseToAnyPublisher()
     }
     
@@ -56,11 +55,9 @@ final class NetworkManager : NetworkProtocol {
                 return data
             })
             .decode(type: T.self, decoder: JSONDecoder())
+            .mapError { APIError.convert(error: $0) }
+            .retry(NetworkConstants.retryTimes)
             .receive(on: DispatchQueue.main)
-            .mapError({ error in
-                APIError.convert(error: error)
-            })
-            .retry(3)
             .eraseToAnyPublisher()
     }
     
@@ -70,7 +67,7 @@ final class NetworkManager : NetworkProtocol {
         }
         
         if shouldPageQueryBeAdded(queryItem) {
-            endpointManager.addQuery(name: "page", value: Constants.deafultPage)
+            endpointManager.addQuery(name: "page", value: NetworkConstants.deafultPage)
         }
     }
     

@@ -120,6 +120,8 @@
 		30172C7227A17F8400A4821C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				30DC6101278F5C61002AC498 /* APIError.swift */,
+				30172C8327A1C5D400A4821C /* Extensions */,
 				30DC60EB278DAA8B002AC498 /* Model.swift */,
 				30DC60BD278DA766002AC498 /* Assets.xcassets */,
 				30172C7327A17F9500A4821C /* Constants.swift */,
@@ -150,8 +152,6 @@
 		30172C7D27A1A3EA00A4821C /* Business Logic Layer */ = {
 			isa = PBXGroup;
 			children = (
-				30172C8327A1C5D400A4821C /* Extensions */,
-				30DC6100278F5C47002AC498 /* Errors */,
 				30DC60E8278DA9F9002AC498 /* View Model */,
 			);
 			path = "Business Logic Layer";
@@ -270,14 +270,6 @@
 				30DC6103278F85FC002AC498 /* CacherProtocol.swift */,
 			);
 			path = Caching;
-			sourceTree = "<group>";
-		};
-		30DC6100278F5C47002AC498 /* Errors */ = {
-			isa = PBXGroup;
-			children = (
-				30DC6101278F5C61002AC498 /* APIError.swift */,
-			);
-			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

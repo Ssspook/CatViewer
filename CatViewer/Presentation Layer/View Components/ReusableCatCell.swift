@@ -2,28 +2,39 @@ import SwiftUI
 
 struct ReusableCatCell: View {
     @StateObject private var catViewModel: CatViewModel
+    private var UIConstants = Constants.UIParameters.self
     
     init(_ catViewModel: CatViewModel) {
         _catViewModel = StateObject(wrappedValue: catViewModel)
     }
     
+    // In order to calculate dynamic width only once
+    var dynamicWidth: CGFloat {
+        let width = Float(catViewModel.width)
+        let height = Float(catViewModel.height)
+        
+        return CGFloat(width / height) * UIConstants.baseHeight
+    }
+    
     var body: some View {
-        HStack(spacing: Constants.spacingBetweenViewElements) {
+        HStack(spacing: UIConstants.spacingBetweenViewElements) {
             
             if let data = ImageCache.shared.getData(for: catViewModel.url),
                let image = UIImage(data: data) {
                 
                 Image(uiImage: image)
                     .resizable()
-                    .frame(width: CGFloat(Float(catViewModel.width) / Float(catViewModel.height) * Float(Constants.baseHeight)),
-                           height: Constants.baseHeight)
+                    .frame(width: dynamicWidth, height: UIConstants.baseHeight)
                 
             } else if catViewModel.displayErrorPicture == true {
                 Image("ErrorPicture")
                     .resizable()
-                    .frame(width: 50, height: 50)
+                    .frame(width: UIConstants.baseWidth,
+                           height: UIConstants.baseHeight)
             } else {
-                ProgressView().progressViewStyle(.circular)
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    .frame(width: dynamicWidth, height: UIConstants.baseHeight)
             }
             
             VStack {
@@ -33,7 +44,6 @@ struct ReusableCatCell: View {
             
             Spacer()
         }
-        .frame(maxWidth: .infinity)
     }
 }
 

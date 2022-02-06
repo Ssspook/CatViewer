@@ -39,7 +39,7 @@ class CatViewer_Tests: XCTestCase {
             return
         }        
         
-        _catListViewModel.fetchCats()
+        _catListViewModel.fetchCatsIfNeeded()
         
         XCTAssertTrue(_catListViewModel.cats.count == 3)
     }

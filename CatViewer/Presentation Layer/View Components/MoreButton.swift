@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MoreButton: View {
     private var catsListViewModel: CatsListViewModel
+    private var UIConstants = Constants.UIParameters.self
     
     init(_ catsListViewModel: CatsListViewModel) {
         self.catsListViewModel = catsListViewModel
@@ -16,15 +17,15 @@ struct MoreButton: View {
     
     var body: some View {
         Button {
-            catsListViewModel.fetchCats()
+            catsListViewModel.fetchCatsIfNeeded()
         } label: {
             Text("More")
                 .foregroundColor(.indigo)
-                .frame(width: Constants.buttonWidth,
-                       height: Constants.baseHeight,
+                .frame(width: UIConstants.buttonWidth,
+                       height: UIConstants.baseHeight,
                        alignment: .center)
-                .overlay(RoundedRectangle(cornerRadius: Constants.cornerRadius).strokeBorder(.pink))
-                .mask(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+                .overlay(RoundedRectangle(cornerRadius: UIConstants.cornerRadius).strokeBorder(.pink))
+                .mask(RoundedRectangle(cornerRadius: UIConstants.cornerRadius))
         }
     }
 }

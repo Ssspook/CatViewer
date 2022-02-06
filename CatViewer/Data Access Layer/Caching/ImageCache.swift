@@ -4,7 +4,9 @@ class ImageCache: CacherProtocol {
     
     static let shared = ImageCache()
     
-    private init() {}
+    private init() {
+        URLCache.shared.memoryCapacity = Constants.Network.cahceMemoryCapacity
+    }
     
     func cacheData(for urlString: String?) {
         guard let urlString = urlString else {
