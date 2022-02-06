@@ -18,8 +18,8 @@ After launching the app you will see a single cat. Tap `More` to fetch another o
 
 <table width="100%" border="0">
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/34959964/152387322-22c7cc30-1730-482c-b7fb-0571688bc793.gif" alt="" align="left" /></td>
-    <td><img src="https://user-images.githubusercontent.com/34959964/152387594-78ca307f-87f3-4d3a-a7de-62d42f4bf266.jpg" alt="" align="center"/></td>
-    <td><img src="https://user-images.githubusercontent.com/34959964/152387606-86a1c4f2-9a71-44c5-9ed9-5038ed149a34.jpg" alt="" align="right"/></td>
+    <td><img src="https://user-images.githubusercontent.com/34959964/152699979-3c650915-c765-4a9b-8ac0-cfb08016b4ac.gif" alt="" align="left" /></td>
+    <td><img src="https://user-images.githubusercontent.com/34959964/152699988-6bf96622-0473-4b41-8664-66b1517bf86d.jpg" alt="" align="center"/></td>
+    <td><img src="https://user-images.githubusercontent.com/34959964/152699994-3552b7b6-561a-4e75-a1b6-99f267b2eaa0.jpg" alt="" align="right"/></td>
   </tr>
 </table>
