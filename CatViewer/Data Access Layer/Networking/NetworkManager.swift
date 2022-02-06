@@ -9,7 +9,7 @@ final class NetworkManager : NetworkProtocol {
     }
     
     init(numberOfCats: Int, endpointHandler: EndpointsProtocol = EndpointsManager()) {
-       endpointManager = endpointHandler
+        endpointManager = endpointHandler
         endpointManager.addQuery(name: "limit", value: String(numberOfCats))
     }
     
@@ -32,6 +32,8 @@ final class NetworkManager : NetworkProtocol {
                 return data
             })
             .receive(on: DispatchQueue.main)
+      // when one line code in closure this is ok to use short parameter call, smth like
+      // .mapError { APIError.convert(error: $0) }
             .mapError({ error in
                 APIError.convert(error: error)
             })
@@ -56,6 +58,7 @@ final class NetworkManager : NetworkProtocol {
                 return data
             })
             .decode(type: T.self, decoder: JSONDecoder())
+      // In this case mapping goes on main queue, that should be avoided as this queue is preffered to ui processes. so position in chaining means a lot
             .receive(on: DispatchQueue.main)
             .mapError({ error in
                 APIError.convert(error: error)

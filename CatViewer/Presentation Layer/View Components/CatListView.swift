@@ -17,10 +17,13 @@ struct CatListView: View {
                 }
                 .navigationTitle(Text("Cats"))
                 .onAppear(perform: {
+                  // .isEmpty
+                  // and again: you ask view model for clause and if it true you ask view model to do smth. why not move this check for .isEmpty inside fetchCatsIfNeeded?
                     if catsListViewModel.cats.count == 0 {
                         catsListViewModel.fetchCats()
                     }
                 })
+              // Alert texts are content(model data) to configure alert view, so it could be encapsulated in view model, mb via composition of object with this fields
                 .alert(catsListViewModel.error?.name ?? "Error", isPresented: $catsListViewModel.showAlert, actions: {}, message: {
                     Text(catsListViewModel.error?.description ?? "Error occured")
                 })
@@ -29,6 +32,7 @@ struct CatListView: View {
             }
         }
         .onAppear {
+//          not propper place to set up cache size. it's not relevant to view somehow
             URLCache.shared.memoryCapacity = 1024 * 1024 * 512
         }
     }
