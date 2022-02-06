@@ -14,7 +14,7 @@ Downloaded images are cashed. Cache size is 512 Mb.
 ![Foundation](https://img.shields.io/badge/-Foundation-lightgrey?style=for-the-badge)
 
 ## Usage guide
-After launching the app you will see a single cat. Tap `more` to fetch another one. <br>
+After launching the app you will see a single cat. Tap `More` to fetch another one. <br>
 
 <table width="100%" border="0">
   <tr>
