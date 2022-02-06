@@ -11,6 +11,7 @@ class Constants {
     }
     
     enum Network {
+        static let responseRange = (200...299)
         static let numberOfCats = 1
         static let deafultPage = "1"
         static let loadTime: Double = 7

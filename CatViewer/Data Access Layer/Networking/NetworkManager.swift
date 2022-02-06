@@ -80,7 +80,7 @@ final class NetworkManager : NetworkProtocol {
     private func validateResponse(_ response: URLResponse?) throws {
         
         if let response = response as? HTTPURLResponse,
-           !(200...299).contains(response.statusCode) {
+           !NetworkConstants.responseRange.contains(response.statusCode) {
             
             throw APIError.badResponce(statusCode: response.statusCode)
         }
