@@ -18,6 +18,7 @@ class CatViewer_Tests: XCTestCase {
     ]
     
     override func setUp() {
+      // Try to run tests before any commit to main/develop branch (usually it controls by CI process and branch permissions and code review on PR to these branches)
         _catListViewModel = CatsListViewModel(networkManager: MockNetworkManager(catsData: catsData))
     }
 
